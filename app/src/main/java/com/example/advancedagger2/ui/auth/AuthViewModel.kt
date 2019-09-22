@@ -1,12 +1,9 @@
-package com.example.advancedagger2.viewmodel
+package com.example.advancedagger2.ui.auth
 
-import android.util.Log
 import androidx.lifecycle.*
 import com.example.advancedagger2.SessionManager
 import com.example.advancedagger2.models.Users
 import com.example.advancedagger2.network.auth.AuthApi
-import com.example.advancedagger2.ui.auth.AuthResource
-import io.reactivex.internal.util.HalfSerializer.onNext
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 import io.reactivex.disposables.CompositeDisposable

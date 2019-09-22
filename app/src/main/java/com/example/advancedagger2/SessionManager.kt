@@ -19,7 +19,7 @@ class SessionManager @Inject constructor() {
 
     //Mediator live data is a sub class of live data which may observe other LiveData
     // objects and react on OnChanged events from them.
-    val cachedUser = MediatorLiveData<AuthResource<Users>>()
+    private val cachedUser = MediatorLiveData<AuthResource<Users>>()
 
     fun authenticatedWithId(source: LiveData<AuthResource<Users>>) {
         if(cachedUser != null) {
@@ -33,7 +33,10 @@ class SessionManager @Inject constructor() {
         }
     }
 
-    fun logout() = Log.d(TAG, "logout: logging out..")
+    fun logout() {
+        Log.d(TAG, "logout: logging out..")
+        cachedUser.value = AuthResource.logout()
+    }
 
     fun getAuthUser() : LiveData<AuthResource<Users>> {
         return cachedUser

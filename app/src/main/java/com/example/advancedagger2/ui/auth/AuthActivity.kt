@@ -1,5 +1,6 @@
 package com.example.advancedagger2.ui.auth
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.text.TextUtils
@@ -10,7 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.RequestManager
 import com.example.advancedagger2.R
-import com.example.advancedagger2.viewmodel.AuthViewModel
+import com.example.advancedagger2.ui.main.MainActivity
 import com.example.advancedagger2.viewmodel.ViewModelProviderFactory
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_auth.*
@@ -56,6 +57,7 @@ class AuthActivity : DaggerAppCompatActivity() {
                 AuthResource.AuthStatus.AUTHENTICATED -> {
                     showProgressBar(false)
                     Log.d(TAG,  "Login Success: ${authResource.data?.emailAddress}")
+                    onLoginSuccess()
                 }
 
                 AuthResource.AuthStatus.NOT_AUTHENTICATED -> {
@@ -71,6 +73,15 @@ class AuthActivity : DaggerAppCompatActivity() {
                 }
             }
         })
+    }
+
+    /**
+     * Navigate to [MainActivity] from [AuthActivity] on login success
+     */
+    private fun onLoginSuccess() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     /**
@@ -104,4 +115,6 @@ class AuthActivity : DaggerAppCompatActivity() {
             .load(logo)
             .into(login_logo)
     }
+
+
 }

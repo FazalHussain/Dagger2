@@ -2,7 +2,7 @@ package com.example.advancedagger2.di.auth
 
 import androidx.lifecycle.ViewModel
 import com.example.advancedagger2.di.ViewModelKey
-import com.example.advancedagger2.viewmodel.AuthViewModel
+import com.example.advancedagger2.ui.auth.AuthViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
