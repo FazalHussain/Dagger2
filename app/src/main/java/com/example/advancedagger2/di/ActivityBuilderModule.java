@@ -23,6 +23,16 @@ import dagger.android.ContributesAndroidInjector;
  */
 @Module
 public abstract class ActivityBuilderModule {
+    /**
+     * Automatically create sub-component with fragment module
+     *
+     * @return The {@linkplain MainActivity}
+     */
+    @ContributesAndroidInjector(
+            modules = { MainFragmentBuilderModule.class, MainViewModelModule.class}
+    )
+    abstract MainActivity contributeMainActivity();
+
 
     /**
      * Automatically create sub-component with module
@@ -33,14 +43,4 @@ public abstract class ActivityBuilderModule {
             modules = { AuthViewModelModule.class, AuthModule.class}
     )
     abstract AuthActivity contributeAuthActivity();
-
-    /**
-     * Automatically create sub-component with fragment module
-     *
-     * @return The {@linkplain MainActivity}
-     */
-    @ContributesAndroidInjector(
-            modules = { MainFragmentBuilderModule.class, MainViewModelModule.class}
-    )
-    abstract MainActivity contributeMainActivity();
 }
